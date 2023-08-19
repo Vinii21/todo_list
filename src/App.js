@@ -6,46 +6,53 @@ import CreateTodoButton from './components/CreateTodoButton';
 import { useEffect, useState } from 'react';
 import AddNewTodo from './components/AddNewTodo';
 
-function App() {
-  const [defaultTodos, setDefaultTodo] = useState([]);
-  const [showModal, setShowModal] = useState(false)
+function useLocalStorage(itemName, inicialState) {
+
+  const [item, setItem] = useState(inicialState);
 
   useEffect(()=>{
-    const getLocalStorage = localStorage.getItem("tareas_v1");
-    if(!getLocalStorage) {
-      localStorage.setItem("tareas_v1", JSON.stringify([]));
-      const firstLocalStorage = localStorage.getItem("tareas_v1")
-      setDefaultTodo(JSON.parse(firstLocalStorage));
-    } else {
-      const parse = JSON.parse(getLocalStorage);
-      setDefaultTodo(parse)
-    }
+    const getLocalStorage = localStorage.getItem(itemName);
+  if(!getLocalStorage) {
+    localStorage.setItem(itemName, JSON.stringify([]));
+    const firstLocalStorage = localStorage.getItem(itemName)
+    setItem(JSON.parse(firstLocalStorage));
+  } else {
+    const parse = JSON.parse(getLocalStorage);
+    setItem(parse)
+  }
   },[])
+
+  const modifyLocalStorage = (newTODOS) => {
+    localStorage.setItem(itemName, JSON.stringify(newTODOS))
+    setItem(newTODOS)
+  }
+
+  return [modifyLocalStorage, item];
+};
+
+function App() {
+  const [showModal, setShowModal] = useState(false);
+  const [ modifyLocalStorage, item] = useLocalStorage("tareas", []);
 
   const [text, setText] = useState("");
 
-  const completedTodos = defaultTodos.filter(todo=> todo.completed).length;
-  const searcheadTodos = defaultTodos.filter(todo=> todo.text.toLocaleLowerCase().includes(text.toLocaleLowerCase()));
-
-  const modifyLocalStorage = (newTODOS) => {
-    localStorage.setItem("tareas_v1", JSON.stringify(newTODOS))
-    setDefaultTodo(newTODOS)
-  }
+  const completedTodos = item.filter(todo=> todo.completed).length;
+  const searcheadTodos = item.filter(todo=> todo.text.toLocaleLowerCase().includes(text.toLocaleLowerCase()));
   
   return (
     <div className="App">
       <nav>
-        <TodoCounter completed={completedTodos} total={defaultTodos.length}/>
+        <TodoCounter completed={completedTodos} total={item.length}/>
         <TodoSearch text={text} setText={setText}/>
       </nav>
       <TodoList>
         {searcheadTodos.map((todo, index)=>(
-          <TodoItem modifyLocalStorage={modifyLocalStorage} defaultTodos={defaultTodos} setDefaultTodo={setDefaultTodo} key={todo.id+todo.text} todo={todo.text} index={index} completed={todo.completed}/>
+          <TodoItem modifyLocalStorage={modifyLocalStorage} defaultTodos={item} key={todo.id+todo.text} todo={todo.text} index={index} completed={todo.completed}/>
         ))}
       </TodoList>
 
       <CreateTodoButton setShowModal={setShowModal}/>
-    <AddNewTodo setShowModal={setShowModal} defaultTodos={defaultTodos} modifyLocalStorage={modifyLocalStorage} showModal={showModal}/>
+    <AddNewTodo setShowModal={setShowModal} defaultTodos={item} modifyLocalStorage={modifyLocalStorage} showModal={showModal}/>
     </div>
   );
 }
