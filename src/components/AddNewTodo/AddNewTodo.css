@@ -63,3 +63,17 @@
 .containerBtns .btnNewModal:nth-child(2):hover {
     background-color: rgb(255, 81, 0);
 }
+
+.btn {
+    border-radius: 50%;
+    border: none;
+    background-color: rgb(240, 156, 88);
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    box-shadow: 1px 1px 25px 5px #000;
+    font-size: 20px;
+}

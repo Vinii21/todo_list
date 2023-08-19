@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../css/AddNewTodo.css"
+import "./AddNewTodo.css"
 
 const AddNewTodo = ({showModal, setShowModal, modifyLocalStorage, defaultTodos}) => {
 

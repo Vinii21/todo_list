@@ -1,4 +1,4 @@
-import "../css/TodoCounter.css"
+import "./TodoCounter.css"
 
 const TodoCounter = ({completed, total}) => {
     return (

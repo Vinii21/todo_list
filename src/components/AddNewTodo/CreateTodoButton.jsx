@@ -1,4 +1,4 @@
-import "../css/TodoList.css";
+import "./AddNewTodo.css";
 
 const CreateTodoButton = ({setShowModal}) => {
 

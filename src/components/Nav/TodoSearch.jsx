@@ -1,4 +1,4 @@
-import "../css/TodoSearch.css";
+import "./TodoSearch.css";
 
 const TodoSearch = ({text, setText}) => {
 

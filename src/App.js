@@ -1,34 +1,11 @@
-import TodoCounter from './components/TodoCounter';
-import TodoSearch from './components/TodoSearch';
-import TodoList from './components/TodoList';
-import TodoItem from './components/TodoItem';
-import CreateTodoButton from './components/CreateTodoButton';
-import { useEffect, useState } from 'react';
-import AddNewTodo from './components/AddNewTodo';
-
-function useLocalStorage(itemName, inicialState) {
-
-  const [item, setItem] = useState(inicialState);
-
-  useEffect(()=>{
-    const getLocalStorage = localStorage.getItem(itemName);
-  if(!getLocalStorage) {
-    localStorage.setItem(itemName, JSON.stringify([]));
-    const firstLocalStorage = localStorage.getItem(itemName)
-    setItem(JSON.parse(firstLocalStorage));
-  } else {
-    const parse = JSON.parse(getLocalStorage);
-    setItem(parse)
-  }
-  },[])
-
-  const modifyLocalStorage = (newTODOS) => {
-    localStorage.setItem(itemName, JSON.stringify(newTODOS))
-    setItem(newTODOS)
-  }
-
-  return [modifyLocalStorage, item];
-};
+import TodoCounter from './components/Nav/TodoCounter';
+import TodoSearch from './components/Nav/TodoSearch';
+import TodoList from './components/TodoList/TodoList';
+import TodoItem from './components/TodoList/TodoItem';
+import CreateTodoButton from './components/AddNewTodo/CreateTodoButton';
+import { useState } from 'react';
+import AddNewTodo from './components/AddNewTodo/AddNewTodo';
+import useLocalStorage from './Hooks/useLocalStorage';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -45,6 +22,7 @@ function App() {
         <TodoCounter completed={completedTodos} total={item.length}/>
         <TodoSearch text={text} setText={setText}/>
       </nav>
+      
       <TodoList>
         {searcheadTodos.map((todo, index)=>(
           <TodoItem modifyLocalStorage={modifyLocalStorage} defaultTodos={item} key={todo.id+todo.text} todo={todo.text} index={index} completed={todo.completed}/>
@@ -52,7 +30,7 @@ function App() {
       </TodoList>
 
       <CreateTodoButton setShowModal={setShowModal}/>
-    <AddNewTodo setShowModal={setShowModal} defaultTodos={item} modifyLocalStorage={modifyLocalStorage} showModal={showModal}/>
+      <AddNewTodo setShowModal={setShowModal} defaultTodos={item} modifyLocalStorage={modifyLocalStorage} showModal={showModal}/>
     </div>
   );
 }
