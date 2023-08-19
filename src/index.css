@@ -13,6 +13,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   position: relative;
   /* overflow: hidden; */
+  background: url("../public/spikes.png");
 }
 
 .App {

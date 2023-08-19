@@ -6,10 +6,11 @@ import CreateTodoButton from './components/AddNewTodo/CreateTodoButton';
 import { useState } from 'react';
 import AddNewTodo from './components/AddNewTodo/AddNewTodo';
 import useLocalStorage from './Hooks/useLocalStorage';
+import Spinner from './components/Spinner/Spinner';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
-  const [ modifyLocalStorage, item] = useLocalStorage("tareas", []);
+  const {modifyLocalStorage, item, loading, error} = useLocalStorage("tareas", []);
 
   const [text, setText] = useState("");
 
@@ -22,13 +23,18 @@ function App() {
         <TodoCounter completed={completedTodos} total={item.length}/>
         <TodoSearch text={text} setText={setText}/>
       </nav>
-      
+      {error && <p style={{paddingTop: "250px"}}>Algo salio mal...! 😔</p>}
+      {(loading) ? <Spinner />
+      :
+      item.length === 0 ?
+      <p style={{paddingTop: "250px", textAlign: "center"}}>¡Todo está bien!😁 <br /> Crear tu primer tarea.😆</p>
+      :
       <TodoList>
-        {searcheadTodos.map((todo, index)=>(
-          <TodoItem modifyLocalStorage={modifyLocalStorage} defaultTodos={item} key={todo.id+todo.text} todo={todo.text} index={index} completed={todo.completed}/>
-        ))}
+      {searcheadTodos.map((todo, index)=>(
+        <TodoItem modifyLocalStorage={modifyLocalStorage} defaultTodos={item} key={todo.id+todo.text} todo={todo.text} index={index} completed={todo.completed}/>
+      ))}
       </TodoList>
-
+      }
       <CreateTodoButton setShowModal={setShowModal}/>
       <AddNewTodo setShowModal={setShowModal} defaultTodos={item} modifyLocalStorage={modifyLocalStorage} showModal={showModal}/>
     </div>
