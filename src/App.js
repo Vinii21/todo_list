@@ -6,7 +6,7 @@ import CreateTodoButton from './components/AddNewTodo/CreateTodoButton';
 import { useState } from 'react';
 import AddNewTodo from './components/AddNewTodo/AddNewTodo';
 import useLocalStorage from './Hooks/useLocalStorage';
-import Spinner from './components/Spinner/Spinner';
+import TodosLoading from './components/TodosLoading/TodosLoading';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -24,7 +24,7 @@ function App() {
         <TodoSearch text={text} setText={setText}/>
       </nav>
       {error && <p style={{paddingTop: "250px"}}>Algo salio mal...! 😔</p>}
-      {(loading) ? <Spinner />
+      {loading ? <TodosLoading />
       :
       item.length === 0 ?
       <p style={{paddingTop: "250px", textAlign: "center"}}>¡Todo está bien!😁 <br /> Crear tu primer tarea.😆</p>

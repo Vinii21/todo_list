@@ -9,7 +9,7 @@
 }
 
 li {
-    margin: 10px 0px;
+    margin: 20px 0px;
     height: 80px;
     display: flex;
     width: 100%;
@@ -17,6 +17,7 @@ li {
     position: relative;
     align-items: center;
     justify-content: center;
+    border-radius: 16px;
 }
 
 li button {
