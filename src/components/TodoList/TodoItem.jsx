@@ -1,20 +1,15 @@
-const TodoItem = ({todo, index, completed, defaultTodos, modifyLocalStorage}) => {
-    
-    const handleComplete = () => {
-        defaultTodos[index].completed = !defaultTodos[index].completed;
-        modifyLocalStorage([...defaultTodos])
-    }
+import { useContext } from "react";
+import { Context } from "../../Context/Context";
 
-    const deleteTodo = () => {
-        defaultTodos.splice(index, 1)
-        modifyLocalStorage([...defaultTodos])
-    }
+const TodoItem = ({todo, index, completed}) => {
+
+    const {handleComplete, deleteTodo} = useContext(Context);
 
     return (
         <li className={`${index % 2 === 0 ? "li" : "lili"}`}>
-            <button onClick={()=>handleComplete()} title={completed ? "Completado" : "Incompleto"}>{completed ? "👍🏼" : "👎🏼"}</button>
+            <button onClick={()=>handleComplete(index)} title={completed ? "Completado" : "Incompleto"}>{completed ? "👍🏼" : "👎🏼"}</button>
             <p className={`${completed ? "completed" : ""}`}>{todo}</p>
-            <button onClick={()=>deleteTodo()} className="span">❌</button>
+            <button onClick={()=> deleteTodo(index)} className="span">❌</button>
         </li>
     );
 }

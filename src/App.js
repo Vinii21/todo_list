@@ -5,21 +5,20 @@ import TodoItem from './components/TodoList/TodoItem';
 import CreateTodoButton from './components/AddNewTodo/CreateTodoButton';
 import AddNewTodo from './components/AddNewTodo/AddNewTodo';
 import TodosLoading from './components/TodosLoading/TodosLoading';
-import { Context, Provider } from './Context/Context';
+import { Context } from './Context/Context';
+import { useContext } from 'react';
 
 function App() {
+
+  const {loading, error, searcheadTodos, item} = useContext(Context);
   
   return (
-    <Provider>
     <div className="App">
       <nav>
         <TodoCounter/>
         <TodoSearch/>
       </nav>
-      <Context.Consumer>
-        {({error, loading, modifyLocalStorage, item, searcheadTodos})=>(
-          <>
-            {error && <p style={{paddingTop: "250px"}}>Algo salio mal...! 😔</p>}
+      {error && <p style={{paddingTop: "250px"}}>Algo salio mal...! 😔</p>}
       {loading ? <TodosLoading />
       :
       item.length === 0 ?
@@ -27,17 +26,13 @@ function App() {
       :
       <TodoList>
       {searcheadTodos.map((todo, index)=>(
-        <TodoItem modifyLocalStorage={modifyLocalStorage} defaultTodos={item} key={todo.id+todo.text} todo={todo.text} index={index} completed={todo.completed}/>
+        <TodoItem key={todo.id+todo.text} todo={todo.text} index={index} completed={todo.completed}/>
       ))}
       </TodoList>
       }
-          </>
-        )}
-      </Context.Consumer>
       <CreateTodoButton/>
       <AddNewTodo/>
     </div>
-    </Provider>
   );
 }
 
