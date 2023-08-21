@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./AddNewTodo.css"
+import { Context } from "../../Context/Context";
 
-const AddNewTodo = ({showModal, setShowModal, modifyLocalStorage, defaultTodos}) => {
+const AddNewTodo = () => {
+
+    const {item: defaultTodos, modifyLocalStorage, setShowModal, showModal} = useContext(Context);
 
     const [newTodo, setNewTodo] = useState("")
     const [placeholder, setPlaceholder] = useState(false)

@@ -3,27 +3,23 @@ import TodoSearch from './components/Nav/TodoSearch';
 import TodoList from './components/TodoList/TodoList';
 import TodoItem from './components/TodoList/TodoItem';
 import CreateTodoButton from './components/AddNewTodo/CreateTodoButton';
-import { useState } from 'react';
 import AddNewTodo from './components/AddNewTodo/AddNewTodo';
-import useLocalStorage from './Hooks/useLocalStorage';
 import TodosLoading from './components/TodosLoading/TodosLoading';
+import { Context, Provider } from './Context/Context';
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
-  const {modifyLocalStorage, item, loading, error} = useLocalStorage("tareas", []);
-
-  const [text, setText] = useState("");
-
-  const completedTodos = item.filter(todo=> todo.completed).length;
-  const searcheadTodos = item.filter(todo=> todo.text.toLocaleLowerCase().includes(text.toLocaleLowerCase()));
   
   return (
+    <Provider>
     <div className="App">
       <nav>
-        <TodoCounter completed={completedTodos} total={item.length}/>
-        <TodoSearch text={text} setText={setText}/>
+        <TodoCounter/>
+        <TodoSearch/>
       </nav>
-      {error && <p style={{paddingTop: "250px"}}>Algo salio mal...! 😔</p>}
+      <Context.Consumer>
+        {({error, loading, modifyLocalStorage, item, searcheadTodos})=>(
+          <>
+            {error && <p style={{paddingTop: "250px"}}>Algo salio mal...! 😔</p>}
       {loading ? <TodosLoading />
       :
       item.length === 0 ?
@@ -35,9 +31,13 @@ function App() {
       ))}
       </TodoList>
       }
-      <CreateTodoButton setShowModal={setShowModal}/>
-      <AddNewTodo setShowModal={setShowModal} defaultTodos={item} modifyLocalStorage={modifyLocalStorage} showModal={showModal}/>
+          </>
+        )}
+      </Context.Consumer>
+      <CreateTodoButton/>
+      <AddNewTodo/>
     </div>
+    </Provider>
   );
 }
 

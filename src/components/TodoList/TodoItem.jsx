@@ -1,5 +1,5 @@
 const TodoItem = ({todo, index, completed, defaultTodos, modifyLocalStorage}) => {
-
+    
     const handleComplete = () => {
         defaultTodos[index].completed = !defaultTodos[index].completed;
         modifyLocalStorage([...defaultTodos])
