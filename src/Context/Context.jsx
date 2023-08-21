@@ -5,29 +5,52 @@ const Context = React.createContext();
 
 const Provider = ({ children }) => {
   const [showModal, setShowModal] = useState(false);
-  const { modifyLocalStorage, item, loading, error } = useLocalStorage( "tareas", []);
+  const { modifyLocalStorage, item, loading, error } = useLocalStorage(
+    "tareas",
+    []
+  );
 
   const [text, setText] = useState("");
 
   const completedTodos = item.filter((todo) => todo.completed).length;
-  const searcheadTodos = item.filter((todo) =>
-    todo.text.toLocaleLowerCase().includes(text.toLocaleLowerCase())
-  ).reverse();
+  const searcheadTodos = item
+    .filter((todo) =>
+      todo.text.toLocaleLowerCase().includes(text.toLocaleLowerCase())
+    );
+  const filterCompletedTodos = item.filter((todo)=>todo.completed === true);
+  const filterIncompletedTodos = item.filter((todo)=>todo.completed === false);
 
   const handleComplete = (index) => {
     item[index].completed = !item[index].completed;
-    modifyLocalStorage([...item])
-}
+    modifyLocalStorage([...item]);
+  };
 
-const deleteTodo = (index) => {
-    item.splice(index, 1)
-    modifyLocalStorage([...item])
-}
+  const deleteTodo = (index) => {
+    item.splice(index, 1);
+    modifyLocalStorage([...item]);
+  };
 
   return (
-    <Context.Provider value={{
-        showModal, setShowModal, modifyLocalStorage, item, loading, error, text, setText, completedTodos, searcheadTodos, handleComplete, deleteTodo
-     }}>{children}</Context.Provider>
+    <Context.Provider
+      value={{
+        showModal,
+        setShowModal,
+        modifyLocalStorage,
+        item,
+        loading,
+        error,
+        text,
+        setText,
+        completedTodos,
+        searcheadTodos,
+        handleComplete,
+        deleteTodo,
+        filterCompletedTodos,
+        filterIncompletedTodos
+      }}
+    >
+      {children}
+    </Context.Provider>
   );
 };
 
