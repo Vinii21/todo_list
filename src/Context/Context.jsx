@@ -12,7 +12,7 @@ const Provider = ({ children }) => {
   const completedTodos = item.filter((todo) => todo.completed).length;
   const searcheadTodos = item.filter((todo) =>
     todo.text.toLocaleLowerCase().includes(text.toLocaleLowerCase())
-  );
+  ).reverse();
 
   const handleComplete = (index) => {
     item[index].completed = !item[index].completed;
