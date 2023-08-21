@@ -20,7 +20,8 @@ const AddNewTodo = () => {
             modifyLocalStorage([...defaultTodos, obj])
             setNewTodo("");
             setShowModal(false);
-            setPlaceholder(false);
+            setPlaceholder(false)
+            
         }
         
     }
@@ -31,7 +32,7 @@ const AddNewTodo = () => {
             <input value={newTodo} onChange={(e)=>setNewTodo(e.target.value)} className={`inputNewTodo ${placeholder ? "active" : ""}`} type="text" placeholder={"Escribe algo para crear una tarea."}/>
             <div className="containerBtns">
                 <button className="btnNewModal" onClick={()=>addNewTodo()}>Crear</button>
-                <button className="btnNewModal" onClick={()=>{setShowModal(false); setPlaceholder(false)}}>Cancelar</button>
+                <button className="btnNewModal" onClick={()=>{setPlaceholder(false); setShowModal(false)}}>Cancelar</button>
             </div>
         </div>
     );

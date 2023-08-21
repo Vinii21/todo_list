@@ -7,12 +7,14 @@ import AddNewTodo from './components/AddNewTodo/AddNewTodo';
 import TodosLoading from './components/TodosLoading/TodosLoading';
 import { Context } from './Context/Context';
 import { useContext } from 'react';
+import Modal from './components/AddNewTodo/Modal';
 
 function App() {
 
   const {loading, error, searcheadTodos, item} = useContext(Context);
   
   return (
+    <>
     <div className="App">
       <nav>
         <TodoCounter/>
@@ -31,8 +33,12 @@ function App() {
       </TodoList>
       }
       <CreateTodoButton/>
-      <AddNewTodo/>
+      
     </div>
+        <Modal>
+          <AddNewTodo/>
+        </Modal>
+      </>
   );
 }
 

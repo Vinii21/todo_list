@@ -1,0 +1,12 @@
+.portalView{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+@media only screen and (min-width: 506px) {
+    .portalView{
+        justify-content: flex-end;
+    }
+  }
+  
