@@ -8,6 +8,8 @@ import TodosLoading from './components/TodosLoading/TodosLoading';
 import { Context } from './Context/Context';
 import { useContext } from 'react';
 import Modal from './components/AddNewTodo/Modal';
+import NavSkeleton from './components/TodosLoading/NavSkeleton';
+import CreateNewTodoSkeleton from './components/TodosLoading/CreateNewTodoSkeleton';
 
 function App() {
 
@@ -16,12 +18,16 @@ function App() {
   return (
     <>
     <div className="App">
+      {
+        loading ? <NavSkeleton /> :
       <nav>
         <TodoCounter/>
         <TodoSearch/>
       </nav>
+      }
       {error && <p style={{paddingTop: "250px"}}>Algo salio mal...! 😔</p>}
-      {loading ? <TodosLoading />
+      {loading ? 
+      <TodosLoading />  
       :
       item.length === 0 ?
       <p style={{paddingTop: "250px", textAlign: "center"}}>¡Todo está bien!😁 <br /> Crear tu primer tarea.😆</p>
@@ -32,7 +38,9 @@ function App() {
       ))}
       </TodoList>
       }
-      <CreateTodoButton/>
+      {
+        loading ? <CreateNewTodoSkeleton /> : <CreateTodoButton/>
+      }
       
     </div>
         <Modal>
