@@ -4,10 +4,10 @@ import { Context } from "../../Context/Context";
 
 const CreateTodoButton = () => {
 
-    const {setShowModal} = useContext(Context);
+    const {showModal, setShowModal} = useContext(Context);
 
     return (
-        <button className="btn" onClick={()=>setShowModal(true)}>➕</button>
+        <button className={`btn ${showModal ? "activeBtn" : ""}`} onClick={()=>setShowModal(true)}>➕</button>
     );
 }
  

@@ -18,6 +18,10 @@ li {
     align-items: center;
     justify-content: center;
     border-radius: 16px;
+    font-family: 'Crimson Text', serif;
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    font-size: 17px;
 }
 
 li button {
@@ -26,7 +30,7 @@ li button {
 }
 
 .li {
-    background-color: rgb(152, 216, 195);
+    background-color: rgba(7, 81, 110, 0.747);
 }
 
 li button:nth-child(1) {
@@ -48,16 +52,19 @@ li button {
 
 .completed {
     text-decoration: line-through;
-    color: #323d1f;
+    color: rgb(255, 81, 0);
 }
 
 .lili {
-    background-color: rgb(204, 203, 128);
+    background-color: rgba(7, 52, 110, 0.747);
 }
 
 @media only screen and (min-width: 506px) {
     .ul{
         padding-top: 150px;
+    }
+    li {
+        font-size: 20px;
     }
   }
   

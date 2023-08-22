@@ -9,7 +9,7 @@ const TodoCounter = () => {
     return (
         
         <h1>{total.length > 0 && completed === total.length ? "¡Felicidades, completaste todas las tareas!😁" 
-        : total.length === 0 ? "Aún no tienes ninguna tarea" : `Has completado ${completed} de ${total.length} TODOS`}</h1>
+        : total.length === 0 ? "Aún no tienes ninguna tarea" : `Has completado ${completed} de ${total.length} ${total.length === 1 ? "tarea" : "tareas"}`}</h1>
     );
 }
  
