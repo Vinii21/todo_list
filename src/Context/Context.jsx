@@ -21,13 +21,16 @@ const Provider = ({ children }) => {
   const filterIncompletedTodos = item.filter((todo)=>todo.completed === false);
 
   const handleComplete = (index) => {
-    item[index].completed = !item[index].completed;
+    searcheadTodos[index].completed = !searcheadTodos[index].completed;
     modifyLocalStorage([...item]);
   };
 
   const deleteTodo = (index) => {
-    item.splice(index, 1);
-    modifyLocalStorage([...item]);
+    const originalIndex = item.findIndex(todo => todo === searcheadTodos[index]);
+    const updatedTodos = [...item];
+    updatedTodos.splice(originalIndex, 1);
+    modifyLocalStorage(updatedTodos);
+    setText("")
   };
 
   return (
