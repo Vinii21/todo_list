@@ -34,12 +34,15 @@ const Provider = ({ children }) => {
   };
 
   const editTodo = (index, newText, setLocalEditMode) => {
-    if(!newText === "") {
+    const defecto = searcheadTodos[index].text
+    if(newText === "") {
+      searcheadTodos[index].text = defecto
+    } else {
       searcheadTodos[index].text = newText
-    } 
+    }
     modifyLocalStorage([...item]);
     setLocalEditMode(false);
-    setText("")
+    setText("");
   }
 
   return (
