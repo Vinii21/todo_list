@@ -33,6 +33,15 @@ const Provider = ({ children }) => {
     setText("")
   };
 
+  const editTodo = (index, newText, setLocalEditMode) => {
+    if(!newText === "") {
+      searcheadTodos[index].text = newText
+    } 
+    modifyLocalStorage([...item]);
+    setLocalEditMode(false);
+    setText("")
+  }
+
   return (
     <Context.Provider
       value={{
@@ -49,7 +58,8 @@ const Provider = ({ children }) => {
         handleComplete,
         deleteTodo,
         filterCompletedTodos,
-        filterIncompletedTodos
+        filterIncompletedTodos,
+        editTodo
       }}
     >
       {children}

@@ -33,17 +33,24 @@ li button {
     background-color: rgba(7, 81, 110, 0.747);
 }
 
-li button:nth-child(1) {
+li .span {
+    width: 100px;
+    height: 40px;
+    position: absolute;
+    right: 20px;
+    top: -24px;
+    display: flex;
+}
+
+li .like {
     position: absolute;
     left: 20px;
     font-size: 25px;
 }
 
-li .span {
-    position: absolute;
-    right: 10px;
-    top: -20px;
+li .edit {
     font-size: 25px;
+    margin: 0px 4px;
 }
 
 li button {
@@ -59,12 +66,38 @@ li button {
     background-color: rgba(7, 52, 110, 0.747);
 }
 
+.containerEdit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.editTodo {
+    position: relative;
+    z-index: 100;
+    outline: none;
+    padding: 7px;
+    border-radius: 15px;
+    border: 3px solid transparent;
+    margin: 20px 0px;
+    background-color: #161a2cd0;
+    backdrop-filter: blur(5px);
+    font-family: 'Crimson Text', serif;
+    color: #fff;
+    font-size: 17px;
+    margin: 0px 20px;
+}
+
 @media only screen and (min-width: 506px) {
     .ul{
         padding-top: 150px;
     }
     li {
         font-size: 20px;
+    }
+    .editTodo {
+        width: 60%;
     }
   }
   
