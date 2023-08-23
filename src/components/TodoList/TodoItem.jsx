@@ -2,9 +2,9 @@ import React, { useContext, useState } from "react";
 import { Context } from "../../Context/Context";
 
 const TodoItem = ({ todo, index, completed }) => {
-    const { handleComplete, deleteTodo, editTodo } = useContext(Context);
+    const { handleComplete, deleteTodo, editTodo} = useContext(Context);
     const [localEditMode, setLocalEditMode] = useState(false);
-    const [textLocal, setTextLocal] = useState("");
+    const [textLocal, setTextLocal] = useState(todo);
 
     return (
         <li className={`${index % 2 === 0 ? "li" : "lili"}`}>
