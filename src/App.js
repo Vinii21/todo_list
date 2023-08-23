@@ -30,7 +30,7 @@ function App() {
       <TodosLoading />  
       :
       item.length === 0 ?
-      <p style={{paddingTop: "250px", textAlign: "center"}}>¡Todo está bien!😁 <br /> Crear tu primer tarea.😆</p>
+      <p style={{paddingTop: "250px", textAlign: "center"}}>¡Todo está bien!😁 <br /> Crea tu primer tarea.😆</p>
       :
       <TodoList>
       {searcheadTodos.map((todo, index)=>(
