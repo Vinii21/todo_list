@@ -10,6 +10,7 @@ import { useContext } from 'react';
 import Modal from './components/AddNewTodo/Modal';
 import NavSkeleton from './components/TodosLoading/NavSkeleton';
 import CreateNewTodoSkeleton from './components/TodosLoading/CreateNewTodoSkeleton';
+import Notes from './components/Notes/Notes';
 
 function App() {
 
@@ -17,36 +18,50 @@ function App() {
   
   return (
     <>
-    <div className="App">
-      {
-        loading ? <NavSkeleton /> :
-      <nav>
-        <TodoCounter/>
-        <TodoSearch/>
-      </nav>
-      }
-      {error && <p style={{paddingTop: "250px"}}>Algo salio mal...! 😔</p>}
-      {loading ? 
-      <TodosLoading />  
-      :
-      item.length === 0 ?
-      <p style={{paddingTop: "250px", textAlign: "center"}}>¡Todo está bien!😁 <br /> Crea tu primer tarea.😆</p>
-      :
-      <TodoList>
-      {searcheadTodos.map((todo, index)=>(
-        <TodoItem key={todo.id+todo.text} todo={todo.text} index={index} completed={todo.completed}/>
-      ))}
-      </TodoList>
-      }
-      {
-        loading ? <CreateNewTodoSkeleton /> : <CreateTodoButton/>
-      }
-      
-    </div>
-        <Modal>
-          <AddNewTodo/>
-        </Modal>
-      </>
+      <div className="App">
+        {loading ? (
+          <NavSkeleton />
+        ) : (
+          <nav>
+            <TodoCounter />
+            <TodoSearch />
+          </nav>
+        )}
+        {error && (
+          <Notes
+            note={"Parece que algo anda mal.😣"}
+            noteTwo={"Revisa tu conexión o intentalo más tarde.😕"}
+          />
+        )}
+        {loading ? (
+          <TodosLoading />
+        ) : item.length === 0 ? (
+          <Notes
+            note={"¡Todo está bien!😁"}
+            noteTwo={"Crea tu primer tarea.😆"}
+          />
+        ) : (
+          <TodoList>
+            {searcheadTodos.length === 0 ? (
+              <Notes data={true} note={"¡Ninguna de tus tareas coincide!😅"} noteTwo={"Prueba buscando con algo distinto.🧐"}/>
+            ) : (
+              searcheadTodos.map((todo, index) => (
+                <TodoItem
+                  key={todo.id + todo.text}
+                  todo={todo.text}
+                  index={index}
+                  completed={todo.completed}
+                />
+              ))
+            )}
+          </TodoList>
+        )}
+        {loading ? <CreateNewTodoSkeleton /> : <CreateTodoButton />}
+      </div>
+      <Modal>
+        <AddNewTodo />
+      </Modal>
+    </>
   );
 }
 

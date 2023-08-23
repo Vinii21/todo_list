@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  cursor: default;
 }
 
 body {
@@ -15,6 +16,14 @@ body {
   /* overflow: hidden; */
   background-color: #1b1b1d;
   color: #fff;
+}
+
+input {
+  cursor: text;
+}
+
+.App::selection {
+  background-color: transparent;
 }
 
 .App {

@@ -1,0 +1,15 @@
+.note {
+    padding-top: 250px; 
+    text-align: center;
+    font-family: 'Crimson Text', serif;
+    font-size: 20px;
+    cursor: default;
+}
+
+.note::selection {
+    background-color: transparent;
+}
+
+.item {
+    padding-top: 50px;  
+}
