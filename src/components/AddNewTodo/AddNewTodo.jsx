@@ -28,13 +28,13 @@ const AddNewTodo = () => {
     
 
     return (
-        <div className={`container-newTodo ${showModal ? "showContainer-newTodo" : ""}`}>
+        <form onSubmit={(e)=>e.preventDefault()} className={`container-newTodo ${showModal ? "showContainer-newTodo" : ""}`}>
             <input value={newTodo} onChange={(e)=>setNewTodo(e.target.value)} className={`inputNewTodo ${placeholder ? "active" : ""}`} type="text" placeholder={"Escribe algo para crear una tarea."}/>
             <div className="containerBtns">
-                <button className="btnNewModal" onClick={()=>addNewTodo()}>Crear</button>
+                <button type="submit" className="btnNewModal" onClick={()=>addNewTodo()}>Crear</button>
                 <button className="btnNewModal" onClick={()=>{setPlaceholder(false); setShowModal(false)}}>Cancelar</button>
             </div>
-        </div>
+        </form>
     );
 }
  
