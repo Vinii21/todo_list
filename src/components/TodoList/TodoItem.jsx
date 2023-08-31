@@ -21,12 +21,12 @@ const TodoItem = ({ todo, index}) => {
                 {completed ? "👍🏼" : "👎🏼"}
             </button>
             {localEditMode ? (
-                <div className="containerEdit">
-                    <input className="editTodo" placeholder={text} value={textLocal} onChange={(e)=>setTextLocal(e.target.value)}/>
-                    <button className="edit" title="Borrar" onClick={() => editTodo(index, textLocal, setLocalEditMode)}>
+                <form onSubmit={(e)=>e.preventDefault()} className="containerEdit">
+                    <input className="editTodo" placeholder={todo} value={textLocal} onChange={(e)=>setTextLocal(e.target.value)}/>
+                    <button type="submit" className="edit" title="Borrar" onClick={() => editTodo(index, textLocal, setLocalEditMode)}>
                     💾
                     </button>
-                </div>
+                </form>
             ) : (
                 <p className={`${completed ? "completed" : ""}`}>{text}</p>
             )}
