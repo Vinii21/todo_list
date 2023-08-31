@@ -1,12 +1,17 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../Context/Context";
+import Modal from "../AddNewTodo/Modal";
+import ModalSubTask from "./ModalSubTask";
 
-const TodoItem = ({ todo, index, completed }) => {
+const TodoItem = ({ todo, index}) => {
+    const {completed, text, subTask} = todo;
     const { handleComplete, deleteTodo, editTodo} = useContext(Context);
     const [localEditMode, setLocalEditMode] = useState(false);
-    const [textLocal, setTextLocal] = useState(todo);
+    const [localSubTaskMode, setSubTaskModeMode] = useState(false);
+    const [textLocal, setTextLocal] = useState(text);
 
     return (
+        <>
         <li className={`${index % 2 === 0 ? "li" : "lili"}`}>
             <button
                 className="like"
@@ -17,15 +22,18 @@ const TodoItem = ({ todo, index, completed }) => {
             </button>
             {localEditMode ? (
                 <div className="containerEdit">
-                    <input className="editTodo" placeholder={todo} value={textLocal} onChange={(e)=>setTextLocal(e.target.value)}/>
+                    <input className="editTodo" placeholder={text} value={textLocal} onChange={(e)=>setTextLocal(e.target.value)}/>
                     <button className="edit" title="Borrar" onClick={() => editTodo(index, textLocal, setLocalEditMode)}>
                     💾
                     </button>
                 </div>
             ) : (
-                <p className={`${completed ? "completed" : ""}`}>{todo}</p>
+                <p className={`${completed ? "completed" : ""}`}>{text}</p>
             )}
             <div className="span">
+                <button className="edit" title="Sub-tareas" onClick={()=>setSubTaskModeMode(true)}>
+                    📜
+                </button>
                 <button
                     className="edit"
                     title="Editar"
@@ -35,11 +43,17 @@ const TodoItem = ({ todo, index, completed }) => {
                 >
                     ✏️
                 </button>
-                <button className="edit" title="Borrar" onClick={() => deleteTodo(index)}>
+                <button className="edit" title="Borrar" onClick={() => {deleteTodo(index); setSubTaskModeMode(false)}}>
                     ❌
                 </button>
             </div>
         </li>
+        { localSubTaskMode &&
+        <Modal>
+            <ModalSubTask subTask={subTask} text={text} setSubTaskModeMode={setSubTaskModeMode}/>
+        </Modal>
+        }
+        </>
     );
 };
 

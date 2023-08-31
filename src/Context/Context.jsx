@@ -43,6 +43,10 @@ const Provider = ({ children }) => {
     modifyLocalStorage([...item]);
     setLocalEditMode(false);
     setText("");
+  };
+
+  const addSubTask = () => {
+
   }
 
   return (
@@ -62,7 +66,8 @@ const Provider = ({ children }) => {
         deleteTodo,
         filterCompletedTodos,
         filterIncompletedTodos,
-        editTodo
+        editTodo,
+        addSubTask
       }}
     >
       {children}

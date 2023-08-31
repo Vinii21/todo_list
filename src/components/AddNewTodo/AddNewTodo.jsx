@@ -16,7 +16,7 @@ const AddNewTodo = () => {
             setPlaceholder(true);
         } else {
             const maximo = 909090909090909;
-            const obj = {id: Math.random() * maximo + 1, text: newTodo, completed: false}
+            const obj = {id: Math.random() * maximo + 1, text: newTodo, completed: false, subTask: []}
             modifyLocalStorage([...defaultTodos, obj])
             setNewTodo("");
             setShowModal(false);

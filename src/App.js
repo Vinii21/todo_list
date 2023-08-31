@@ -48,9 +48,8 @@ function App() {
               searcheadTodos.map((todo, index) => (
                 <TodoItem
                   key={todo.id + todo.text}
-                  todo={todo.text}
                   index={index}
-                  completed={todo.completed}
+                  todo={todo}
                 />
               ))
             )}

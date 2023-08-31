@@ -12,7 +12,7 @@ li {
     margin: 20px 0px;
     height: 80px;
     display: flex;
-    width: 100%;
+    width: 95%;
     max-width: 700px;
     position: relative;
     align-items: center;
@@ -37,7 +37,7 @@ li .span {
     width: 100px;
     height: 40px;
     position: absolute;
-    right: 20px;
+    right: 25px;
     top: -24px;
     display: flex;
 }
@@ -87,6 +87,71 @@ li button {
     color: #fff;
     font-size: 17px;
     margin: 0px 20px;
+}
+
+.subTask {
+    position: fixed;
+    bottom: 40%;
+    right: 50%;
+    transform: translate(50%, 50%);
+    width: 65%;
+    height: 400px;
+    border-radius: 16px;
+    background-color: #07325a60;
+    backdrop-filter: blur(10px);
+}
+
+.subTask-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    position: relative;
+}
+
+.subTask-header .title {
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: default;
+}
+
+.subTask-header .closed {
+    font-size: 25px;
+    position: absolute;
+    top: -20px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.subTask-body {
+    width: 100%;
+    height: 200px;
+    overflow-y: scroll;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.subTask-body .sub {
+    color: #fff;
+    border: 1px solid;
+    background-color: none;
+    height: 40px;
+    width: 90%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    border-radius: 0px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.411);
+}
+
+.subTask-body .sub input {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
 }
 
 @media only screen and (min-width: 506px) {
