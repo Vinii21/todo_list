@@ -1,11 +1,30 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "./TodoList.css"
 import { Context } from "../../Context/Context";
 import CreateTodoButton from "../AddNewTodo/CreateTodoButton";
+import SubTask from "./SubTask";
 
-const ModalSubTask = ({text, setSubTaskModeMode, subTask}) => {
+const ModalSubTask = ({todo, setSubTaskModeMode}) => {
 
-    const {addSubTask} = useContext(Context)
+    const {text, subTask} = todo;
+    const prevent = subTask === undefined ? [] : subTask
+    const {item: defaultTodos, modifyLocalStorage} = useContext(Context)
+    const [localShowAddNewSubTask, setLocalShowAddNewSubTask] = useState(false);
+    const [textLocal, setTextLocal] = useState("");
+    
+    const addNewSubTodo = () => {
+            const newSubTask = {name: textLocal, completed: false};
+            const findTodo = defaultTodos.find(item=> item.id === todo.id);
+            if(!findTodo.subTask) {
+                findTodo.subTask = []
+            } 
+            findTodo.subTask.push(newSubTask)
+            const getIndex = defaultTodos.indexOf(todo);
+            defaultTodos.splice(getIndex, 1, findTodo);
+            modifyLocalStorage(defaultTodos);
+            setLocalShowAddNewSubTask(false);
+            setTextLocal("");
+    }
 
     return (
         <>
@@ -16,13 +35,17 @@ const ModalSubTask = ({text, setSubTaskModeMode, subTask}) => {
             </div>
             <ul className="subTask-body">
                 {
-                    [1,1,1,1,1,1,1].map(()=>(
-                        <li className="sub"><input type="checkbox" /> Qué hacer?</li>
+                    localShowAddNewSubTask &&
+                    <li className={`subNew`}><input value={textLocal} onChange={(e)=>setTextLocal(e.target.value)} type="text" className="new-subTask" placeholder="Escribe la nueva Sub-tarea"/></li>
+                }
+                { 
+                    prevent.map((item, index)=>(
+                        <SubTask id={todo.id} index={index} item={item} key={index}/>
                     ))
                 }
             </ul>
             <div>
-                <CreateTodoButton subTask={true}/>
+                <CreateTodoButton addNewSubTodo={addNewSubTodo} setTextLocal={setTextLocal} setLocalShowAddNewSubTask={setLocalShowAddNewSubTask} text={textLocal} localShowAddNewSubTask={localShowAddNewSubTask} subTask={true}/>
             </div>
         </div>
         

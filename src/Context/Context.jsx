@@ -33,6 +33,22 @@ const Provider = ({ children }) => {
     setText("")
   };
 
+  const handleCompletedSubTask = (index, id) => {
+    const todo = searcheadTodos.find(data=>data.id===id);
+    const originalIndex = item.indexOf(todo);
+    searcheadTodos[originalIndex].subTask[index].completed = !searcheadTodos[originalIndex].subTask[index].completed
+    modifyLocalStorage([...item]);
+  }
+
+  const handleDeleteSubTask = (index, id) => {
+    const todo = item.find(data=>data.id===id);
+    const originalIndex = item.indexOf(todo);
+    const updatedTodos = [...item];
+    const access = updatedTodos[originalIndex].subTask;
+    access.splice(index, 1);
+    modifyLocalStorage([...updatedTodos]);
+  }
+
   const editTodo = (index, newText, setLocalEditMode) => {
     const defecto = searcheadTodos[index].text
     if(newText === "") {
@@ -44,10 +60,6 @@ const Provider = ({ children }) => {
     setLocalEditMode(false);
     setText("");
   };
-
-  const addSubTask = () => {
-
-  }
 
   return (
     <Context.Provider
@@ -66,8 +78,9 @@ const Provider = ({ children }) => {
         deleteTodo,
         filterCompletedTodos,
         filterIncompletedTodos,
-        editTodo,
-        addSubTask
+        editTodo, 
+        handleCompletedSubTask,
+        handleDeleteSubTask
       }}
     >
       {children}

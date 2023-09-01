@@ -107,6 +107,10 @@
     box-shadow: 1px 1px 30px 10px rgb(16, 121, 0);
 }
 
+.btn-sendNewTask {
+    background-color: rgb(74, 16, 121);
+    box-shadow: 1px 1px 30px 10px rgb(41, 9, 68);
+}
 @media only screen and (min-width: 506px) {
     .inputNewTodo{
         font-size: 18px;
