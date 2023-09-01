@@ -31,9 +31,9 @@ const TodoItem = ({ todo, index}) => {
                 <p className={`${completed ? "completed" : ""}`}>{text}</p>
             )}
             <div className="span">
-                <button className="edit" title="Sub-tareas" onClick={()=>setSubTaskModeMode(true)}>
+               {/*  <button className="edit" title="Sub-tareas" onClick={()=>setSubTaskModeMode(true)}>
                     📜
-                </button>
+                </button> */}
                 <button
                     className="edit"
                     title="Editar"
