@@ -1,0 +1,93 @@
+.container-portal-categories {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 100;
+}
+
+.container-categories {
+    position: fixed;
+    width: 200px;
+    height: 100vh;
+    border: 2px solid tomato;
+    background-color: aliceblue;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-categories .icon-open {
+    color: black;
+    height: 70px;
+    width: 30px;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px 0px 0px 10px;
+    position: absolute;
+    left: -30px;
+    bottom: 60px;
+    border-bottom: 2px solid tomato;
+    border-left: 2px solid tomato;
+    border-top: 2px solid tomato;
+    font-size: 20px;
+}
+
+.container-categories .icon-open:hover {
+    background-color: rgb(211, 214, 216);
+}
+
+.container-categories .container-cards {
+    width: 90%;
+    height: 418px;
+    margin-top: 10px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.container-categories .container-cards .card-category {
+    width: 90%;
+    height: 35px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-shrink: 0;
+    margin-bottom: 10px;
+}
+
+.container-categories .card-category .counter {
+    border-radius: 50%;
+    background-color: rgb(202, 124, 5);
+    color: white;
+    position: absolute;
+    top: -8px;
+    right: -5px;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+}
+
+.container-categories .add-card {
+    width: 75%;
+    height: 35px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    font-size: 20px;
+    position: absolute;
+    bottom: 30px;
+}
