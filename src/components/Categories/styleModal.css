@@ -1,0 +1,77 @@
+.containerNewCategory {
+    width: 80%;
+    max-width: 300px;
+    height: 150px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(47, 18, 128, 0.664);
+    backdrop-filter: blur(5px);
+    position: fixed;
+    bottom: 30px;
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    bottom: -200px;
+    right: 10px;
+    transition: 1s all ease;
+}
+
+.containerNewCategory .conatiner-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: transparent;
+}
+
+.conatiner-inputs .btnIcon {
+    border-radius: 50%;
+    padding: 3px;
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.inputNewCategory {
+    width: 90%;
+    border-radius: 10px;
+    background-color: #17032e;
+    border: 3px solid transparent;
+    padding: 10px;
+    color: #fff;
+    font-weight: bold;
+    outline: none;
+}
+
+.inputNewCategory:focus {
+    border: 3px solid #ccc; 
+}
+
+.btnNewCategory {
+    margin-top: 10px;
+    padding: 5px;
+    border: 2px solid #030718;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100px;
+}
+
+.btnNewCategory:hover {
+    background-color: #969494;
+}
+
+.showModal {
+    bottom: 20px;
+}
+
+.btnClosed {
+    position: absolute;
+    top: -15px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}

@@ -26,9 +26,9 @@ function useLocalStorage(itemName, inicialState) {
     }, 3000)
     },[itemName])
   
-    const modifyLocalStorage = (newTODOS) => {
-      localStorage.setItem(itemName, JSON.stringify(newTODOS))
-      setItem(newTODOS)
+    const modifyLocalStorage = (newDATA) => {
+      localStorage.setItem(itemName, JSON.stringify(newDATA))
+      setItem(newDATA)
     }
   
     return {modifyLocalStorage, item, loading, error};

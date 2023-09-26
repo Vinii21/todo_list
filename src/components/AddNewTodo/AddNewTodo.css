@@ -12,7 +12,7 @@
     align-items: center;
     position: fixed;
     bottom: -300px;
-    z-index: 200;
+    z-index: 800;
     opacity: 0;
     transition: all .5s ease-in-out;
 }
@@ -28,7 +28,7 @@
     padding: 7px;
     border-radius: 15px;
     border: 3px solid transparent;
-    width: 80%;
+    width: 95%;
     max-width: 500px;
     margin: 20px 0px;
     background-color: #191f3adc;
@@ -111,8 +111,54 @@
     background-color: rgb(74, 16, 121);
     box-shadow: 1px 1px 30px 10px rgb(41, 9, 68);
 }
+
+.info{
+    position: relative;
+    left: -10px;
+    top: -20px;
+    font-size: 11px;
+}
+
+.conatiner-category {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -10px;
+}
+
+.conatiner-category .select-category {
+    padding: 5px;
+    border-radius: 16px;
+    font-weight: bold;
+    width: 100px;
+    margin: 0px 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #030718;
+    color: #fff;
+}
+
+.conatiner-category .add-card {
+    padding: 5px;
+    border: 2px solid #030718;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.conatiner-category .add-card:hover {
+    background-color: rgb(170, 165, 165);
+}
+
 @media only screen and (min-width: 506px) {
     .inputNewTodo{
         font-size: 18px;
+    }
+    .info{
+        position: relative;
+        left: -80px;
+        top: -20px;
+        font-size: 14px;
     }
   }

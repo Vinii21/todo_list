@@ -11,12 +11,14 @@ import Modal from './components/AddNewTodo/Modal';
 import NavSkeleton from './components/TodosLoading/NavSkeleton';
 import CreateNewTodoSkeleton from './components/TodosLoading/CreateNewTodoSkeleton';
 import Notes from './components/Notes/Notes';
-import PortalModalCategories from './components/Categories/PortalModalCategories';
 import Categories from './components/Categories/Categories';
+import ModalNewCategory from './components/Categories/ModalNewCategory';
+import { ContextCategories } from './Context/ContextCategories';
 
 function App() {
 
   const {loading, error, searcheadTodos, item} = useContext(Context);
+
   
   return (
     <>
@@ -61,10 +63,9 @@ function App() {
       </div>
       <Modal>
         <AddNewTodo />
+        {/* {loading ? null : <Categories />}
+        <ModalNewCategory /> */}
       </Modal>
-      {/* <PortalModalCategories>
-        <Categories />
-      </PortalModalCategories> */}
     </>
   );
 }

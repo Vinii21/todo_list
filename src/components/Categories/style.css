@@ -1,45 +1,48 @@
-.container-portal-categories {
-    position: relative;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    position: fixed;
-    z-index: 100;
-}
-
 .container-categories {
     position: fixed;
+    top: 0px;
+    right: -201px;
     width: 200px;
     height: 100vh;
-    border: 2px solid tomato;
-    background-color: aliceblue;
-    right: 0;
+    background-color: rgba(76, 84, 92, 0.377);
+    backdrop-filter: blur(5px);
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: all 1s ease;
+    z-index: 300;
+}
+
+.active-container-categories {
+    right: 0px; 
 }
 
 .container-categories .icon-open {
-    color: black;
+    color: rgb(245, 244, 244);
     height: 70px;
     width: 30px;
-    background-color: aliceblue;
+    background-color: rgba(76, 84, 92, 0.377);
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px 0px 0px 10px;
     position: absolute;
     left: -30px;
-    bottom: 60px;
-    border-bottom: 2px solid tomato;
-    border-left: 2px solid tomato;
-    border-top: 2px solid tomato;
+    bottom: 120px;
     font-size: 20px;
 }
 
 .container-categories .icon-open:hover {
-    background-color: rgb(211, 214, 216);
+    background-color: rgba(76, 84, 92, 0.445);
+}
+
+.container-categories .icon-open:hover svg {
+    transform: scale(1.2);
+}
+
+.scale {
+    transform: scale(1.2);
+    color: tomato;
 }
 
 .container-categories .container-cards {
@@ -58,6 +61,7 @@
     width: 90%;
     height: 35px;
     border: 2px solid #000;
+    color: #000;
     border-radius: 5px;
     display: flex;
     justify-content: center;
@@ -65,11 +69,12 @@
     position: relative;
     flex-shrink: 0;
     margin-bottom: 10px;
+    background-color: #cbe0aa;
 }
 
 .container-categories .card-category .counter {
     border-radius: 50%;
-    background-color: rgb(202, 124, 5);
+    background-color: rgb(207, 162, 65);
     color: white;
     position: absolute;
     top: -8px;
